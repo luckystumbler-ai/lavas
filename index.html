@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LAVAS Foundries Ltd. — Complete Cast Iron Foundry Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Hanken+Grotesk:wght@400;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#ffb783;
+    --accent:#e67e22;
+    --bg-dark:#121414;
+    --bg-darker:#0c0f0f;
+    --bg-card:#1a1c1c;
+    --bg-card-hover:#1e2020;
+    --text-primary:#e2e2e2;
+    --text-secondary:#dcc1b1;
+    --border-color:rgba(86,67,55,0.3);
+    --border-color-light:rgba(86,67,55,0.2);
+    --brown-dark:#4f2500;
+    --brown-darker:#502600;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Hanken Grotesk',sans-serif;
+    background:var(--bg-dark);
+    color:var(--text-primary);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;}
+  img{display:block;max-width:100%;}
+  .container{max-width:1440px;margin:0 auto;padding:0 64px;width:100%;}
+
+  /* ===== Header ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(18,20,20,0.8);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border-color-light);
+    box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);
+  }
+  nav{
+    max-width:1440px;margin:0 auto;padding:16px 64px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-weight:700;font-size:24px;color:var(--primary);letter-spacing:-0.6px;}
+  .nav-links{display:flex;gap:32px;list-style:none;align-items:center;}
+  .nav-links a{color:var(--text-secondary);text-decoration:none;font-size:18px;padding-bottom:9px;}
+  .nav-links a.active{color:var(--primary);font-weight:700;border-bottom:2px solid var(--primary);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    border:none;border-radius:8px;font-family:'Hanken Grotesk',sans-serif;
+    font-weight:700;cursor:pointer;text-decoration:none;transition:all .25s ease;
+  }
+  .btn-primary{background:var(--primary);color:var(--brown-dark);padding:8px 24px;font-size:16px;}
+  .btn-primary:hover{background:var(--accent);transform:translateY(-2px);}
+  .btn-hero{padding:17.5px 32px;font-size:18px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);}
+  .btn-secondary{background:transparent;color:var(--text-primary);border:2px solid #a48c7d;padding:18px 34px;font-size:18px;}
+  .btn-secondary:hover{border-color:var(--primary);color:var(--primary);}
+  .btn-cta-orange{background:var(--accent);color:var(--brown-darker);padding:16px 40px;font-size:18px;box-shadow:0 20px 25px -5px rgba(0,0,0,0.1);}
+  .btn-cta-orange:hover{transform:translateY(-2px);}
+  .btn-final-primary{background:var(--primary);color:var(--brown-dark);padding:22px 48px;font-size:20px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);}
+  .btn-final-secondary{background:transparent;color:var(--primary);border:2px solid var(--primary);padding:22px 50px;font-size:20px;}
+  .btn-final-secondary:hover{background:rgba(255,183,131,0.08);}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;margin-top:73px;min-height:800px;
+    display:flex;align-items:center;overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:-2;}
+  .hero-bg img{width:114.7%;height:100%;object-fit:cover;position:absolute;left:-7.35%;top:0;}
+  .hero-gradient{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#121414 0%,rgba(18,20,20,0.4) 50%,rgba(18,20,20,0) 100%);}
+  .hero-content{
+    display:flex;gap:48px;align-items:center;
+    max-width:1440px;margin:0 auto;padding:0 16px 0 64px;width:100%;
+  }
+  .hero-text{display:flex;flex-direction:column;gap:31px;max-width:640px;}
+  .hero-text h1{
+    color:var(--primary);font-weight:700;font-size:64px;line-height:70.4px;
+    letter-spacing:-1.6px;text-transform:uppercase;
+    text-shadow:0 0 20px rgba(230,126,34,0.4);
+  }
+  .hero-text p{color:var(--text-secondary);font-size:18px;line-height:28.8px;max-width:576px;}
+  .hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-card{
+    background:rgba(30,32,32,0.7);backdrop-filter:blur(6px);
+    border:1px solid var(--border-color);border-radius:12px;
+    padding:33px;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);
+    min-width:340px;flex-shrink:0;
+  }
+  .hero-card h3{
+    font-weight:500;font-size:24px;color:#ffdcc5;
+    border-bottom:1px solid var(--border-color);padding-bottom:17px;margin-bottom:16px;
+  }
+  .hero-card ul{list-style:none;display:flex;flex-direction:column;gap:16px;}
+  .hero-card li{display:flex;gap:12px;align-items:center;font-size:16px;color:var(--text-primary);}
+  .check-icon{width:20px;height:20px;flex-shrink:0;color:var(--primary);}
+
+  /* ===== Introduction ===== */
+  .introduction{background:var(--bg-card);padding:95px 0;}
+  .intro-content{display:flex;gap:80px;align-items:center;max-width:1440px;margin:0 auto;padding:0 64px;}
+  .intro-image-wrap{position:relative;width:537px;flex-shrink:0;}
+  .intro-image{
+    aspect-ratio:1;border-radius:16px;border:1px solid var(--border-color-light);
+    overflow:hidden;box-shadow:0 25px 50px -12px rgba(0,0,0,0.25);position:relative;
+  }
+  .intro-image::before{
+    content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+    box-shadow:inset 0 0 60px rgba(255,183,131,0.08);
+  }
+  .intro-image img{width:100%;height:100%;object-fit:cover;}
+  .intro-text{max-width:536px;display:flex;flex-direction:column;gap:23px;}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;letter-spacing:1.2px;color:var(--primary);text-transform:uppercase;}
+  .intro-text h2{font-weight:600;font-size:40px;line-height:48px;color:var(--text-primary);}
+  .intro-text p{color:var(--text-secondary);font-size:18px;line-height:28.8px;}
+  .intro-stats{display:flex;gap:32px;padding-top:9px;}
+  .stat-block h4{font-weight:700;font-size:48px;color:var(--primary);line-height:48px;}
+  .stat-block p{font-family:'JetBrains Mono',monospace;font-weight:400;font-size:16px;color:var(--text-secondary);line-height:24px;margin-top:4px;}
+
+  /* ===== Process Timeline ===== */
+  .process-timeline{background:var(--bg-dark);padding:96px 0;}
+  .timeline-header{text-align:center;margin-bottom:80px;}
+  .timeline-header h2{font-weight:600;font-size:40px;color:var(--text-primary);margin-bottom:16px;}
+  .underline{height:4px;width:96px;background:var(--primary);margin:0 auto;}
+  .timeline-wrap{position:relative;max-width:1440px;margin:0 auto;padding:0 64px;}
+  .timeline-wrap::before{
+    content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+    background:var(--border-color);transform:translateX(-50%);
+  }
+  .timeline-steps{display:flex;flex-direction:column;gap:128px;}
+  .timeline-step{display:grid;grid-template-columns:1fr auto 1fr;gap:96px;align-items:center;position:relative;}
+  .step-text{display:flex;flex-direction:column;gap:8px;}
+  .step-text.right{align-items:flex-end;text-align:right;}
+  .step-text.left{align-items:flex-start;text-align:left;}
+  .step-num{font-family:'JetBrains Mono',monospace;color:var(--primary);font-size:16px;}
+  .step-text h3{font-weight:500;font-size:24px;color:var(--text-primary);}
+  .step-text p{color:var(--text-secondary);font-size:16px;line-height:24px;padding-top:8px;}
+  .step-icon{
+    width:64px;height:64px;border-radius:50%;background:var(--primary);
+    display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    box-shadow:0 10px 25px rgba(255,183,131,0.35);
+  }
+  .step-icon svg{width:22px;height:22px;color:var(--brown-dark);}
+  .step-image{
+    height:256px;border-radius:12px;border:1px solid var(--border-color);
+    overflow:hidden;background:var(--bg-card);
+  }
+  .step-image img{width:100%;height:100%;object-fit:cover;}
+
+  /* ===== Workflow Continuity ===== */
+  .workflow{background:var(--bg-darker);border-top:1px solid var(--border-color-light);border-bottom:1px solid var(--border-color-light);padding:97px 0;}
+  .workflow-inner{max-width:1440px;margin:0 auto;padding:0 64px;display:flex;flex-direction:column;gap:64px;}
+  .workflow h2{text-align:center;font-weight:500;font-size:24px;letter-spacing:2.4px;text-transform:uppercase;color:var(--primary);}
+  .workflow-track{position:relative;display:flex;align-items:center;height:48px;}
+  .workflow-line{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:4px;background:#333535;border-radius:2px;}
+  .workflow-line::after{content:'';position:absolute;inset:0;background:var(--primary);box-shadow:0 0 15px rgba(255,183,131,0.8);}
+  .workflow-points{position:relative;display:flex;justify-content:space-between;width:100%;}
+  .workflow-point{display:flex;flex-direction:column;align-items:center;gap:16px;}
+  .workflow-icon{
+    width:48px;height:48px;border-radius:50%;background:#282a2b;
+    border:2px solid var(--primary);display:flex;align-items:center;justify-content:center;
+    box-shadow:0 0 15px rgba(255,183,131,0.4);
+  }
+  .workflow-icon svg{width:18px;height:18px;color:var(--primary);}
+  .workflow-point-label{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--text-secondary);white-space:nowrap;}
+
+  /* ===== Statistics ===== */
+  .statistics{background:var(--bg-darker);padding:96px 0;position:relative;overflow:hidden;}
+  .stats-skew{position:absolute;inset:29px 0 -163px 0;overflow:hidden;}
+  .stats-skew-inner{position:absolute;inset:-20% -10%;background:rgba(255,183,131,0.05);transform:skewY(-6deg) skewX(-6deg);}
+  .stats-grid{position:relative;z-index:1;display:flex;gap:48px;max-width:1440px;margin:0 auto;padding:0 64px;}
+  .stat-item{flex:1;text-align:center;display:flex;flex-direction:column;gap:8px;}
+  .stat-item h4{font-weight:700;font-size:48px;color:var(--primary);}
+  .stat-item p{font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--text-secondary);}
+
+  /* ===== Industrial Banner ===== */
+  .banner{position:relative;height:384px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .banner-bg{position:absolute;inset:0;z-index:-2;opacity:0.6;}
+  .banner-bg img{width:100%;height:141.28%;object-fit:cover;position:absolute;top:-20.64%;left:0;}
+  .banner-gradient{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#121414 0%,rgba(18,20,20,0) 50%,#121414 100%);}
+  .banner-content{display:flex;flex-direction:column;align-items:center;gap:32px;max-width:1440px;padding:0 64px;text-align:center;}
+  .banner-content h2{font-weight:700;font-size:64px;line-height:70.4px;letter-spacing:-1.28px;color:var(--text-primary);text-shadow:0 0 20px rgba(230,126,34,0.4);}
+
+  /* ===== Features ===== */
+  .features{background:var(--bg-dark);padding:96px 64px;}
+  .features-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .feature-card{
+    background:var(--bg-card-hover);border:1px solid var(--border-color-light);
+    border-radius:16px;padding:41px;display:flex;flex-direction:column;gap:16px;
+    transition:all .3s ease;
+  }
+  .feature-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 20px 40px rgba(255,183,131,0.12);}
+  .feature-icon{width:40px;height:40px;color:var(--primary);}
+  .feature-card h3{font-weight:500;font-size:24px;color:var(--text-primary);padding-top:8px;}
+  .feature-card p{color:var(--text-secondary);font-size:16px;line-height:24px;}
+
+  /* ===== FAQ ===== */
+  .faq{background:var(--bg-dark);padding:96px 256px;}
+  .faq-inner{max-width:768px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;gap:64px;}
+  .faq h2{text-align:center;font-weight:600;font-size:40px;color:var(--text-primary);}
+  .faq-list{display:flex;flex-direction:column;gap:16px;}
+  .faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;overflow:hidden;transition:border-color .3s ease;}
+  .faq-item:hover{border-color:var(--primary);}
+  .faq-header{
+    padding:24px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;
+  }
+  .faq-header h4{font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:18px;color:var(--text-primary);}
+  .faq-icon{width:12px;height:8px;color:var(--text-secondary);transition:transform .3s ease;flex-shrink:0;}
+  .faq-item.active .faq-icon{transform:rotate(180deg);}
+  .faq-content{max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .faq-item.active .faq-content{max-height:200px;}
+  .faq-content-inner{padding:0 24px 24px;color:var(--text-secondary);font-size:16px;line-height:24px;}
+
+  /* ===== Final CTA ===== */
+  .cta{position:relative;padding:128px 64px;overflow:hidden;display:flex;justify-content:center;}
+  .cta-bg{position:absolute;inset:0;z-index:-2;}
+  .cta-bg img{width:100%;height:119.49%;object-fit:cover;position:absolute;top:-9.74%;left:0;}
+  .cta-overlay{position:absolute;inset:0;z-index:-1;background:rgba(18,20,20,0.8);backdrop-filter:blur(2px);}
+  .cta-content{display:flex;flex-direction:column;align-items:center;gap:23px;max-width:1440px;width:100%;text-align:center;}
+  .cta-content h2{font-weight:700;font-size:64px;line-height:70.4px;letter-spacing:-1.28px;color:var(--text-primary);}
+  .cta-content p{color:var(--text-secondary);font-size:18px;line-height:28.8px;max-width:672px;}
+  .cta-buttons{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding-top:25px;}
+
+  /* ===== Footer ===== */
+  footer{background:var(--bg-darker);border-top:1px solid var(--border-color);padding:65px 64px 32px;}
+  .footer-grid{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:24px;margin-bottom:33px;}
+  .footer-section h4{font-weight:700;font-size:16px;color:var(--primary);margin-bottom:24px;}
+  .footer-section.brand h4{font-size:24px;font-weight:700;font-family:'Space Grotesk',sans-serif;}
+  .footer-section p{color:var(--text-secondary);font-size:16px;line-height:24px;opacity:.8;}
+  .footer-links{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:16px;}
+  .footer-links a:hover{color:var(--primary);}
+  .footer-divider{border-top:1px solid rgba(86,67,55,0.1);padding-top:33px;max-width:1440px;margin:0 auto;text-align:center;}
+  .footer-divider p{color:var(--text-secondary);font-size:14px;}
+
+  /* ===== Responsive ===== */
+  @media (max-width:1024px){
+    .hero-content{flex-direction:column;padding:40px 24px;}
+    .hero-card{width:100%;}
+    .intro-content{flex-direction:column;padding:0 24px;}
+    .intro-image-wrap{width:100%;max-width:480px;}
+    .timeline-step{grid-template-columns:1fr;gap:24px;}
+    .step-text.right,.step-text.left{align-items:flex-start;text-align:left;}
+    .timeline-wrap::before{left:32px;}
+    .step-icon{order:-1;}
+    .features-grid{grid-template-columns:1fr;}
+    .stats-grid{flex-wrap:wrap;gap:32px;}
+    .stat-item{flex:1 1 40%;}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .faq{padding:96px 24px;}
+    nav{padding:16px 24px;}
+    .container{padding:0 24px;}
+  }
+  @media (max-width:640px){
+    .hero-text h1{font-size:38px;line-height:44px;}
+    .banner-content h2, .cta-content h2{font-size:34px;line-height:40px;}
+    .intro-text h2{font-size:30px;line-height:36px;}
+    .timeline-header h2{font-size:28px;}
+    .nav-links{display:none;}
+    .stats-grid{flex-direction:column;}
+    .footer-grid{grid-template-columns:1fr;}
+    .workflow-point-label{font-size:11px;}
+    .workflow-icon{width:36px;height:36px;}
+    .cta,.faq,.features{padding-left:24px;padding-right:24px;}
+    .banner-content, .cta-content{padding:0 24px;}
+    .hero-buttons,.cta-buttons{flex-direction:column;width:100%;}
+    .hero-buttons .btn,.cta-buttons .btn{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">LAVAS FOUNDRIES</div>
+    <ul class="nav-links">
+      <li><a href="#process" class="active">Industries</a></li>
+      <li><a href="#industries">Process</a></li>
+      <li><a href="#capabilities">Quality Capabilities</a></li>
+      <!--<li><a href="#quality">Quality</a></li>-->
+    </ul>
+    <!--<button class="btn btn-primary">Get a Quote</button> -->
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="process">
+  <div class="hero-bg"><img src="https://www.figma.com/api/mcp/asset/8a9b2a92-3d07-431e-913f-fd7f565ed5a2" alt="Molten iron pour at LAVAS Foundries"></div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>Complete Cast Iron Foundry Solutions</h1>
+      <p>From pattern making to final inspection. We manage every stage of the casting process under one roof, ensuring precision engineering and uncompromising quality.</p>
+      <div class="hero-buttons">
+        <button class="btn btn-hero" style="background:var(--primary);color:var(--brown-dark);">Get a Quote</button>
+        <button class="btn btn-secondary">Explore Our Process</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Production Check</h3>
+      <ul>
+        <li><svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" fill="currentColor"/></svg> End-to-End Manufacturing</li>
+        <li><svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" fill="currentColor"/></svg> Precision Engineering</li>
+        <li><svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" fill="currentColor"/></svg> Strict Quality Control</li>
+        <li><svg class="check-icon" viewBox="0 0 20 20" fill="none"><path d="M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 111.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z" fill="currentColor"/></svg> On-Time Delivery</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCTION -->
+<section class="introduction">
+  <div class="intro-content">
+    <div class="intro-image-wrap">
+      <div class="intro-image">
+        <img src="https://www.figma.com/api/mcp/asset/5a68ed5e-6bfc-4c25-9b48-8a24205af946" alt="Foundry technician inspecting cast iron component">
+      </div>
+    </div>
+    <div class="intro-text">
+      <p class="eyebrow">Our Core Philosophy</p>
+      <h2>Built Around Quality at Every Stage</h2>
+      <p>At LAVAS Foundries, we believe that world-class castings are the result of meticulous attention to detail. Our facilities integrate advanced metallurgical testing with traditional casting expertise. Whether it's a single prototype or high-volume production, our facility is engineered to deliver excellence without compromise.</p>
+      <div class="intro-stats">
+        <div class="stat-block"><h4>0%</h4><p>DEFECT TOLERANCE</p></div>
+        <div class="stat-block"><h4>24/7</h4><p>MONITORED POURING</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS TIMELINE -->
+<section class="process-timeline" id="industries">
+  <div class="timeline-header">
+    <h2>Our Integrated Manufacturing Process</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="timeline-wrap">
+    <div class="timeline-steps">
+
+      <div class="timeline-step">
+        <div class="step-text right">
+          <span class="step-num">STEP 01</span>
+          <h3>Pattern Making</h3>
+          <p>The foundation of every great casting. We utilize high-precision CNC machining and 3D printing to create complex patterns that ensure dimensional accuracy from the very start.</p>
+        </div>
+        <div class="step-icon"><svg viewBox="0 0 11 18" fill="none"><path d="M1 1l9 8-9 8" stroke="#4f2500" stroke-width="2" fill="none"/></svg></div>
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/5e0cb2b1-7496-420b-a863-95aea89515ef" alt="CNC pattern making for cast iron molds"></div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/fe7de12d-bfe4-457e-91a9-08c456c85305" alt="Sand mold preparation process"></div>
+        <div class="step-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="#4f2500" stroke-width="2"/></svg></div>
+        <div class="step-text left">
+          <span class="step-num">STEP 02</span>
+          <h3>Mold Preparation</h3>
+          <p>Advanced resin-bonded sand systems create robust molds capable of withstanding extreme temperatures while maintaining the fine details of the master pattern.</p>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-text right">
+          <span class="step-num">STEP 03</span>
+          <h3>Melting</h3>
+          <p>Our induction furnaces reach temperatures exceeding 2,800°F. We precisely control the chemical composition of the iron to meet specific ASTM standards for every pour.</p>
+        </div>
+        <div class="step-icon"><svg viewBox="0 0 16 19" fill="none"><path d="M8 1c2 4-3 5-1 9 1 2 4 2 4 5 0 2-1.5 3-3 3s-3-1-3-3" stroke="#4f2500" stroke-width="2" fill="none"/></svg></div>
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/d577f127-c0aa-410a-823d-11aec63a3e6a" alt="Induction furnace melting iron"></div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/97d4854c-69bf-4edd-8cb2-b85048f0420d" alt="Molten iron pouring into molds"></div>
+        <div class="step-icon"><svg viewBox="0 0 16 20" fill="none"><path d="M2 4h12l-2 14H4L2 4z" stroke="#4f2500" stroke-width="2" fill="none"/></svg></div>
+        <div class="step-text left">
+          <span class="step-num">STEP 04</span>
+          <h3>Pouring</h3>
+          <p>The critical moment of creation. Automated pouring systems ensure consistent flow rates and minimize turbulence, resulting in high-integrity castings free from inclusions.</p>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-text right">
+          <span class="step-num">STEP 05</span>
+          <h3>Cooling &amp; Solidification</h3>
+          <p>Controlled cooling cycles allow the crystalline structure of the iron to form correctly, ensuring the mechanical properties and durability required for heavy industry.</p>
+        </div>
+        <div class="step-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2v16M3 6l14 8M3 14l14-8" stroke="#4f2500" stroke-width="2"/></svg></div>
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/41c9d6df-19be-4871-87c2-584ab6c63954" alt="Cast iron parts cooling and solidifying"></div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="step-image"><img src="https://www.figma.com/api/mcp/asset/f47bea53-273f-48b0-b086-55615335263a" alt="Final inspection and finishing of cast iron parts"></div>
+        <div class="step-icon"><svg viewBox="0 0 20 18" fill="none"><path d="M2 9c2-5 6-7 8-7s6 2 8 7c-2 5-6 7-8 7s-6-2-8-7z" stroke="#4f2500" stroke-width="2" fill="none"/><circle cx="10" cy="9" r="2.5" stroke="#4f2500" stroke-width="2"/></svg></div>
+        <div class="step-text left">
+          <span class="step-num">STEP 06</span>
+          <h3>Finishing &amp; Inspection</h3>
+          <p>Every casting undergoes shot blasting, grinding, and rigorous non-destructive testing (NDT) to ensure it meets our 100% defect-free promise before shipping.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WORKFLOW CONTINUITY -->
+<section class="workflow">
+  <div class="workflow-inner">
+    <h2>Workflow Continuity</h2>
+    <div class="workflow-track">
+      <div class="workflow-line"></div>
+      <div class="workflow-points">
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 2l8 5-8 5V2z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div><span class="workflow-point-label">PATTERN</span></div>
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><rect x="2" y="2" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.5"/></svg></div><span class="workflow-point-label">MOLD</span></div>
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1c1.5 3-2 3.5-.5 6 .8 1.2 2.5 1.2 2.5 3" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div><span class="workflow-point-label">MELTING</span></div>
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M2 3h8l-1.5 8h-5L2 3z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></div><span class="workflow-point-label">POURING</span></div>
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><path d="M6 1v10M1.5 3.5l9 5M1.5 8.5l9-5" stroke="currentColor" stroke-width="1.5"/></svg></div><span class="workflow-point-label">COOLING</span></div>
+        <div class="workflow-point"><div class="workflow-icon"><svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/><circle cx="6" cy="6" r="1.2" fill="currentColor"/></svg></div><span class="workflow-point-label">INSPECT</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS -->
+<section class="statistics">
+  <div class="stats-skew"><div class="stats-skew-inner"></div></div>
+  <div class="stats-grid">
+    <div class="stat-item"><h4>40+</h4><p>YEARS OF EXPERTISE</p></div>
+    <div class="stat-item"><h4>500+</h4><p>PROJECTS COMPLETED</p></div>
+    <div class="stat-item"><h4>100%</h4><p>QUALITY COMPLIANCE</p></div>
+    <div class="stat-item"><h4>97%</h4><p>ON-TIME DELIVERY</p></div>
+  </div>
+</section>
+
+<!-- INDUSTRIAL BANNER -->
+<section class="banner">
+  <div class="banner-bg"><img src="https://www.figma.com/api/mcp/asset/5e3ccd09-6c45-4933-85ba-27353b10f7c4" alt="LAVAS Foundries industrial facility"></div>
+  <div class="banner-gradient"></div>
+  <div class="banner-content">
+    <h2>Engineering Stronger Castings Through Every Step</h2>
+    <button class="btn btn-cta-orange">Request a Quote</button>
+  </div>
+</section>
+
+<!-- WHY OUR PROCESS STANDS APART -->
+<section class="features" id="capabilities">
+  <div class="features-grid">
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 40" fill="none"><rect x="4" y="4" width="32" height="32" rx="4" stroke="currentColor" stroke-width="2"/><path d="M12 20h16M20 12v16" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>End-to-End Control</h3>
+      <p>By handling pattern making through finishing in-house, we eliminate supply chain delays and maintain total quality oversight.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 37 37" fill="none"><circle cx="18" cy="18" r="15" stroke="currentColor" stroke-width="2"/><path d="M18 10v8l6 4" stroke="currentColor" stroke-width="2"/></svg>
+      <h3>Precision Quality</h3>
+      <p>Our laboratory uses spectrometer analysis and real-time thermal monitoring to guarantee metal integrity and mechanical properties.</p>
+    </div>
+    <div class="feature-card">
+      <svg class="feature-icon" viewBox="0 0 40 32" fill="none"><path d="M2 26l8-12 7 6 9-14 12 20H2z" stroke="currentColor" stroke-width="2" fill="none" stroke-linejoin="round"/></svg>
+      <h3>Efficient Production</h3>
+      <p>Optimized layouts and lean manufacturing principles allow us to offer competitive lead times without sacrificing engineering standards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ 
+<section class="faq" id="quality">
+  <div class="faq-inner">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+          <h4>What types of iron do you cast?</h4>
+          <svg class="faq-icon" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">We specialize in ductile iron, gray iron, and austempered ductile iron (ADI) castings. Our capabilities range from simple components to complex, high-performance parts meeting ASTM, SAE, and ISO specifications.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+          <h4>What are your typical lead times?</h4>
+          <svg class="faq-icon" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">Standard lead times range from 4-8 weeks depending on part complexity and order size. We also offer expedited casting services for urgent requirements. Contact our team for specific timeline details.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-header" onclick="this.parentElement.classList.toggle('active')">
+          <h4>Do you provide finish machining services?</h4>
+          <svg class="faq-icon" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <div class="faq-content"><div class="faq-content-inner">Yes, we offer in-house machining, grinding, and finishing services. From precision boring to complex multi-axis operations, our CNC facilities can complete your parts to tight tolerances.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!-- FINAL CTA -->
+<section class="cta">
+  <div class="cta-bg"><img src="https://www.figma.com/api/mcp/asset/4486a5e7-68ec-43df-aaae-09f2a587f4b8" alt="LAVAS Foundries floor"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>Ready to Build Your Next Casting Project?</h2>
+    <p>Consult with our engineering team today. We provide the expertise and capacity to handle your most challenging cast iron requirements.</p>
+    <div class="cta-buttons">
+      <button class="btn btn-final-primary">Start Your Quote</button>
+      <button class="btn btn-final-secondary">Download Technical Data</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-section brand">
+      <h4 style="color:var(--primary);">LAVAS Foundries Ltd.</h4>
+      <p>Precision engineering for heavy industry. Certified cast iron foundry excellence since 1998.</p>
+    </div>
+    <div class="footer-section">
+      <h4>Process</h4>
+      <ul class="footer-links">
+        <li><a href="#">Manufacturing Process</a></li>
+        <li><a href="#">Industries Served</a></li>
+        <li><a href="#">Technical Data</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Support</h4>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>24 COFIOA INDUSTRIAL ESTATE<br>Coimbatore, TN 641201<br>info@lavas.ltd</p>
+    </div>
+  </div>
+  <div class="footer-divider">
+    <p>© 2024 LAVAS Foundries Ltd. All rights reserved. Precision Engineering for Heavy Industry.</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-header').forEach(h=>{
+    h.addEventListener('click',()=>h.parentElement.classList.toggle('active'));
+  });
+
+  // Scroll-based active nav
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll',()=>{
+    let current='';
+    sections.forEach(s=>{
+      if(pageYOffset >= s.offsetTop - 200) current = s.id;
+    });
+    navLinks.forEach(l=>{
+      l.classList.toggle('active', l.getAttribute('href').slice(1)===current);
+    });
+  });
+
+  // Image fallback if Figma asset URL expires
+  document.querySelectorAll('img').forEach(img=>{
+    img.addEventListener('error',function(){
+      this.style.background = 'linear-gradient(135deg,#1e2020,#282a2b)';
+    });
+  });
+</script>
+</body>
+</html>
