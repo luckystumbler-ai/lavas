@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferrous Precision — Castings Made to Specification</title>
+<meta name="description" content="Ferrous Precision Castings — integrated foundry process from pattern making to final inspection, precision iron and steel castings made to specification.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --color-black:#000101;
+    --color-white:#f7f9fb;
+    --color-pure-white:#ffffff;
+    --color-bg-light:#f2f4f6;
+    --color-card-light:#eceef0;
+    --color-border:#c5c6ca;
+    --color-border-soft:#e0e3e5;
+    --color-text-body:#44474a;
+    --color-text-muted:#838486;
+    --color-accent:#fd761a;
+    --color-accent-dark:#9d4300;
+    --color-footer-bg:#1a1c1e;
+    --font-display:'Inter',system-ui,sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+    --container-max:1280px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-display);
+    color:var(--color-black);
+    background:var(--color-white);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;margin:0;padding:0;}
+  h1,h2,h3,h4,p{margin:0;}
+  button{font-family:inherit;}
+
+  :focus-visible{
+    outline:3px solid var(--color-accent);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+
+  .container{
+    max-width:var(--container-max);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .visually-hidden{
+    position:absolute;
+    width:1px;height:1px;
+    padding:0;margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+  }
+
+  .skip-link{
+    position:absolute;
+    left:-999px;
+    top:0;
+    background:var(--color-accent);
+    color:#fff;
+    padding:12px 20px;
+    z-index:100;
+    font-weight:700;
+  }
+  .skip-link:focus{ left:24px; top:8px; }
+
+  /* ---------- Top Nav ---------- */
+  .top-nav{
+    background:var(--color-white);
+    border-bottom:1px solid var(--color-border);
+    position:sticky;
+    top:0;
+    z-index:50;
+  }
+  .top-nav__inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:80px;
+    gap:24px;
+  }
+  .logo{
+    font-size:clamp(20px,2.4vw,32px);
+    font-weight:700;
+    letter-spacing:0.01em;
+    white-space:nowrap;
+  }
+  .primary-nav{
+    display:flex;
+    gap:24px;
+    align-items:center;
+  }
+  .primary-nav a{
+    font-size:18px;
+    color:var(--color-text-body);
+    padding:4px 2px;
+    border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .primary-nav a:hover,
+  .primary-nav a:focus-visible{
+    color:var(--color-black);
+    border-bottom-color:var(--color-accent);
+  }
+  .nav-cta{
+    background:var(--color-accent);
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.02em;
+    padding:12px 24px;
+    border-radius:2px;
+    white-space:nowrap;
+    display:inline-block;
+    transition:background-color .15s ease;
+  }
+  .nav-cta:hover, .nav-cta:focus-visible{ background:#e4690f; }
+
+  .nav-toggle{
+    display:none;
+    background:transparent;
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    padding:8px 10px;
+    cursor:pointer;
+  }
+  .nav-toggle svg{ display:block; }
+
+  /* ---------- Buttons (shared) ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.03em;
+    padding:17.5px 32px;
+    border-radius:2px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:background-color .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn--primary{
+    background:var(--color-accent);
+    color:#fff;
+  }
+  .btn--primary:hover, .btn--primary:focus-visible{ background:#e4690f; }
+  .btn--outline{
+    background:transparent;
+    color:var(--color-white);
+    border-color:var(--color-white);
+  }
+  .btn--outline:hover, .btn--outline:focus-visible{
+    background:var(--color-white);
+    color:var(--color-black);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--color-black);
+    overflow:hidden;
+    padding:96px 0 96px;
+  }
+  .hero__bg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.55;
+  }
+  .hero__scrim{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(0,1,1,.92) 0%, rgba(0,1,1,.72) 45%, rgba(0,1,1,.35) 100%);
+  }
+  .hero__content{
+    position:relative;
+    z-index:1;
+    max-width:760px;
+  }
+  .hero h1{
+    color:var(--color-white);
+    font-weight:800;
+    font-size:clamp(36px,6vw,64px);
+    line-height:1.1;
+    letter-spacing:-0.01em;
+  }
+  .hero__lede{
+    color:#d8dadc;
+    font-size:18px;
+    line-height:1.55;
+    margin-top:20px;
+    max-width:44ch;
+  }
+  .hero__actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:36px;
+  }
+
+  /* ---------- Section basics ---------- */
+  .section{ padding:80px 0; }
+  .section--tight{ padding:80px 0 160px; }
+  .section-heading{
+    font-weight:700;
+    font-size:clamp(28px,4.2vw,48px);
+    line-height:1.15;
+    letter-spacing:-0.01em;
+  }
+  .section-subtext{
+    color:var(--color-text-body);
+    font-size:16px;
+    line-height:1.5;
+    margin-top:12px;
+    max-width:56ch;
+  }
+  .section-head--center{ text-align:center; }
+  .section-head--center .section-subtext{ margin-left:auto; margin-right:auto; }
+
+  .media-frame{
+    position:relative;
+    border-radius:4px;
+    border:1px solid var(--color-border);
+    box-shadow:0 1px 2px rgba(0,1,1,.08);
+    overflow:hidden;
+    background:var(--color-pure-white);
+  }
+  .media-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+
+  /* ---------- About & Process ---------- */
+  .about{
+    background:var(--color-white);
+  }
+  .about__grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:center;
+  }
+  .about h2{ color:var(--color-black); }
+  .about__desc{
+    color:var(--color-text-body);
+    font-size:16px;
+    line-height:1.5;
+    margin-top:12px;
+    max-width:60ch;
+  }
+  .process-list{
+    margin-top:36px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+  .process-item{
+    display:flex;
+    gap:24px;
+    align-items:flex-start;
+  }
+  .process-item__icon{
+    flex:0 0 auto;
+    width:48px;
+    height:48px;
+    border-radius:12px;
+    background:var(--color-border-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .process-item__icon svg{
+    width:20px;
+    height:20px;
+    stroke:var(--color-accent-dark);
+  }
+  .process-item h3{
+    font-size:24px;
+    font-weight:600;
+    line-height:1.33;
+  }
+  .process-item p{
+    color:var(--color-text-body);
+    font-size:14px;
+    line-height:1.4;
+    margin-top:4px;
+  }
+  .about__media{ aspect-ratio:592/384; }
+
+  /* ---------- Capabilities ---------- */
+  .capabilities{ background:var(--color-bg-light); }
+  .capabilities__grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+    align-items:stretch;
+    margin-top:48px;
+  }
+  .capabilities__media{ aspect-ratio:592/384; }
+  .capabilities__card{
+    background:var(--color-white);
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    box-shadow:0 1px 2px rgba(0,1,1,.06);
+    padding:32px;
+  }
+  .capabilities__card h3{
+    font-size:32px;
+    font-weight:600;
+    line-height:1.25;
+    padding-bottom:4px;
+    border-bottom:1px solid var(--color-border-soft);
+  }
+  .badge-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:24px;
+    padding-bottom:24px;
+  }
+  .badge{
+    font-family:var(--font-mono);
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:.02em;
+    color:var(--color-black);
+    background:var(--color-border-soft);
+    border-radius:2px;
+    padding:4px 12px;
+    white-space:nowrap;
+  }
+  .capabilities__card h3.capacity-heading{ margin-top:24px; }
+  .spec-list{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .spec-list li{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--color-text-body);
+    font-size:16px;
+    line-height:1.5;
+  }
+  .spec-list svg{
+    flex:0 0 auto;
+    width:12px;
+    height:12px;
+    fill:var(--color-accent-dark);
+  }
+
+  /* ---------- Quality & Testing ---------- */
+  .quality{ background:var(--color-white); }
+  .quality__grid{
+    display:grid;
+    grid-template-columns:1.02fr 1fr;
+    gap:48px;
+    align-items:center;
+    margin-top:56px;
+  }
+  .quality__card{
+    background:var(--color-card-light);
+    border:1px solid var(--color-border);
+    border-radius:4px;
+    box-shadow:0 1px 2px rgba(0,1,1,.06);
+    padding:32px;
+  }
+  .quality__card h3{
+    font-size:32px;
+    font-weight:600;
+    line-height:1.25;
+  }
+  .quality-list{
+    margin-top:24px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .quality-item{
+    border-bottom:1px solid var(--color-border);
+    padding-bottom:16px;
+  }
+  .quality-item:last-child{
+    border-bottom:none;
+    padding-bottom:0;
+  }
+  .quality-item h4{
+    font-size:24px;
+    font-weight:600;
+    line-height:1.33;
+  }
+  .quality-item p{
+    color:var(--color-text-body);
+    font-size:14px;
+    line-height:1.4;
+    margin-top:2px;
+  }
+  .quality__media{ aspect-ratio:699/500; }
+
+  /* ---------- Footer ---------- */
+  .site-footer{
+    background:var(--color-footer-bg);
+    border-top:2px solid var(--color-accent-dark);
+    padding:80px 0;
+  }
+  .footer__grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:32px;
+    align-items:start;
+    padding-top:84px;
+  }
+  .footer__brand h2{
+    color:var(--color-white);
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:.02em;
+  }
+  .footer__meta{
+    color:var(--color-text-muted);
+    font-size:14px;
+    line-height:1.4;
+    margin-top:16px;
+  }
+  .footer__links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:24px;
+    justify-content:flex-end;
+  }
+  .footer__links a{
+    color:var(--color-text-muted);
+    font-size:14px;
+    transition:color .15s ease;
+  }
+  .footer__links a:hover, .footer__links a:focus-visible{ color:var(--color-white); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .about__grid,
+    .capabilities__grid,
+    .quality__grid{
+      grid-template-columns:1fr;
+    }
+    .about__media{ order:-1; aspect-ratio:16/10; }
+    .quality__grid{ display:flex; flex-direction:column; }
+    .quality__media{ order:-1; aspect-ratio:16/10; }
+    .footer__grid{
+      grid-template-columns:1fr;
+    }
+    .footer__links{ justify-content:flex-start; }
+  }
+
+  @media (max-width:820px){
+    .primary-nav, .nav-cta{ display:none; }
+    .nav-toggle{ display:inline-flex; }
+    .top-nav.nav-open .primary-nav{
+      display:flex;
+      position:absolute;
+      top:80px;
+      left:0;
+      right:0;
+      background:var(--color-white);
+      border-bottom:1px solid var(--color-border);
+      flex-direction:column;
+      gap:0;
+      padding:8px 24px 16px;
+    }
+    .top-nav.nav-open .primary-nav a{
+      padding:12px 0;
+      width:100%;
+      border-bottom:1px solid var(--color-border-soft);
+    }
+    .top-nav.nav-open .nav-cta{
+      display:inline-block;
+      margin:16px 24px 20px;
+    }
+  }
+
+  @media (max-width:560px){
+    .section{ padding:56px 0; }
+    .section--tight{ padding:56px 0 96px; }
+    .hero{ padding:64px 0; }
+    .hero__actions{ flex-direction:column; align-items:stretch; }
+    .hero__actions .btn{ width:100%; }
+    .capabilities__card, .quality__card{ padding:24px; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
+<header class="top-nav" id="siteNav">
+  <div class="container top-nav__inner">
+    <a class="logo" href="#main-content">FERROUS PRECISION</a>
+
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#process">Process</a>
+      <a href="#materials">Materials</a>
+      <a href="#facility">Facility</a>
+      <a href="#quality">Quality</a>
+      <a href="#industries">Industries</a>
+    </nav>
+
+    <a class="nav-cta" href="#quote">REQUEST QUOTE</a>
+  </div>
+</header>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <img
+      class="hero__bg"
+      src="https://commons.wikimedia.org/wiki/Special:FilePath/(Employees_of_Foundry_Departmant,_working_pouring_molten_metal_into_molds,_US_Navy_Yard,_Mare_Island,_CA)_-_NARA_-_296870.jpg"
+      alt="Foundry workers in protective gear pouring glowing molten iron into sand molds on the casting floor."
+      loading="eager">
+    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <h1 id="hero-heading">Built on Experience.<br>Driven by Quality.</h1>
+      <p class="hero__lede">We manufacture castings that meet the required dimensional, metallurgical, and performance specifications for demanding industrial applications.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#quote">REQUEST A QUOTE</a>
+        <a class="btn btn--outline" href="#process">LEARN ABOUT OUR PROCESS</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT & INTEGRATED PROCESS -->
+  <section class="section about" id="process" aria-labelledby="process-heading">
+    <div class="container about__grid">
+      <div>
+        <h2 class="section-heading" id="process-heading">From Molten Metal to Finished Casting</h2>
+        <p class="about__desc">Our integrated production environment ensures strict control over every stage of the casting process, from initial pattern design to the final quality inspection.</p>
+
+        <ol class="process-list">
+          <li class="process-item">
+            <span class="process-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                <path d="M2 2l7.586 7.586"/>
+                <circle cx="11" cy="11" r="2"/>
+              </svg>
+            </span>
+            <div>
+              <h3>1. Pattern Making &amp; Design</h3>
+              <p>Precision engineering of patterns for optimal mold creation.</p>
+            </div>
+          </li>
+
+          <li class="process-item">
+            <span class="process-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2c1.5 3 4 5.5 4 9a4 4 0 0 1-8 0c0-1 .3-1.8.8-2.7C9.5 9.5 10 10.5 10 11.5"/>
+                <path d="M12 22a4 4 0 0 0 4-4c0-2-4-6-4-6s-4 4-4 6a4 4 0 0 0 4 4z"/>
+              </svg>
+            </span>
+            <div>
+              <h3>2. Melting &amp; Pouring</h3>
+              <p>Controlled melting in high-capacity furnaces ensuring exact metallurgical composition.</p>
+            </div>
+          </li>
+
+          <li class="process-item">
+            <span class="process-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2 3 7v10l9 5 9-5V7l-9-5z"/>
+                <path d="M3 7l9 5 9-5"/>
+                <path d="M12 12v10"/>
+              </svg>
+            </span>
+            <div>
+              <h3>3. Molding &amp; Casting</h3>
+              <p>Advanced molding systems for accurate dimensional tolerances.</p>
+            </div>
+          </li>
+
+          <li class="process-item">
+            <span class="process-item__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="10" cy="10" r="6"/>
+                <line x1="21" y1="21" x2="14.65" y2="14.65"/>
+                <path d="M8 10l1.5 1.5L13 8"/>
+              </svg>
+            </span>
+            <div>
+              <h3>4. Inspection &amp; Finishing</h3>
+              <p>Rigorous testing and machining to meet exact specifications.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="media-frame about__media">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Casting.jpg"
+          alt="Freshly cast iron part still embedded in its sand mold, showing the mold cavity and metal surface after pouring.">
+      </div>
+    </div>
+  </section>
+
+  <!-- CASTING CAPABILITIES -->
+  <section class="section capabilities" id="materials" aria-labelledby="capabilities-heading">
+    <div class="container">
+      <div class="section-head--center" style="max-width:672px;margin:0 auto;">
+        <h2 class="section-heading" id="capabilities-heading">Castings Made to Specification</h2>
+        <p class="section-subtext">We specialize in precise metallurgical compositions tailored for heavy-duty performance.</p>
+      </div>
+
+      <div class="capabilities__grid">
+        <div class="media-frame capabilities__media">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Born_bronze_-_Bronze_casts.jpg"
+            alt="A row of finished metal castings of varying shapes and sizes, cooled and removed from their molds.">
+        </div>
+
+        <div class="capabilities__card">
+          <h3>Material Grades</h3>
+          <div class="badge-row" role="list" aria-label="Available material grades">
+            <span class="badge" role="listitem">GREY CAST IRON</span>
+            <span class="badge" role="listitem">DUCTILE IRON</span>
+            <span class="badge" role="listitem">SG IRON</span>
+          </div>
+
+          <h3 class="capacity-heading">Capacity</h3>
+          <ul class="spec-list">
+            <li>
+              <svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5"/></svg>
+              Weight Range: 80g to 400kg
+            </li>
+            <li>
+              <svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5"/></svg>
+              High Volume Production
+            </li>
+            <li>
+              <svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="5"/></svg>
+              Custom Prototyping
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUALITY & TESTING -->
+  <section class="section section--tight quality" id="quality" aria-labelledby="quality-heading">
+    <div class="container">
+      <div class="section-head--center">
+        <h2 class="section-heading" id="quality-heading">Quality You Can Measure</h2>
+        <p class="section-subtext">Integrated metallurgical and sand testing laboratories.</p>
+      </div>
+
+      <div class="quality__grid">
+        <div class="media-frame quality__media">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/Microstructure_of_martensitic_stainless_steel_AISI_420.jpg"
+            alt="Micrograph showing the crystalline grain microstructure of martensitic stainless steel viewed under a metallurgical microscope.">
+        </div>
+
+        <div class="quality__card">
+          <h3>Testing Capabilities</h3>
+          <div class="quality-list">
+            <div class="quality-item">
+              <h4>Chemical Composition</h4>
+              <p>Spectrometer analysis for exact elemental breakdown.</p>
+            </div>
+            <div class="quality-item">
+              <h4>Microstructure Analysis</h4>
+              <p>Microscopic examination of grain structure and integrity.</p>
+            </div>
+            <div class="quality-item">
+              <h4>Hardness Testing</h4>
+              <p>Brinell and Rockwell hardness verification.</p>
+            </div>
+            <div class="quality-item">
+              <h4>Tensile Strength</h4>
+              <p>Mechanical property validation under load.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="facility">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h2>FERROUS PRECISION</h2>
+        <p class="footer__meta">© 2024 Ferrous Precision Castings. All Rights Reserved.<br>ISO 9001:2015 Certified.</p>
+      </div>
+
+      <nav class="footer__links" id="industries" aria-label="Footer">
+        <a href="#terms">Terms of Service</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#certifications">Quality Certifications</a>
+        <a href="#safety">Safety Standards</a>
+        <a href="#datasheets">Material Data Sheets</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var nav = document.getElementById('siteNav');
+    var toggle = document.getElementById('navToggle');
+    if(!nav || !toggle) return;
+    toggle.addEventListener('click', function(){
+      var isOpen = nav.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    document.getElementById('primaryNav').addEventListener('click', function(e){
+      if(e.target.tagName === 'A'){
+        nav.classList.remove('nav-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
